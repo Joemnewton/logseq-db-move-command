@@ -1,4 +1,6 @@
-import "@logseq/libs";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+require("@logseq/libs");
 async function moveBlockToPage(blockUuid, targetPageName) {
     try {
         const block = await logseq.Editor.getBlock(blockUuid);
