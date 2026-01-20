@@ -13,18 +13,29 @@ A Logseq DB plugin that allows you to quickly move blocks to other pages or jour
 
 ### Easy Install (Recommended)
 
-1. Download the latest release from the [Releases page](https://github.com/Joemnewton/logseq-db-move-command/releases)
-2. Extract the `logseq-db-move-command.zip` file
+**Option 1: Direct Download (No build required)**
+1. Download or clone this repository
+2. In Logseq, go to Settings > Plugins > Load unpacked plugin
+3. Select the repository folder
+
+The `dist` folder with built files is already included, so you can use the plugin immediately without running any build commands.
+
+**Option 2: From Releases**
+1. Download the latest release ZIP from the [Releases page](https://github.com/Joemnewton/logseq-db-move-command/releases)
+2. Extract the ZIP file
 3. In Logseq, go to Settings > Plugins > Load unpacked plugin
 4. Select the extracted folder
 
-### From Source (For Developers)
+### For Developers
+
+If you want to modify the plugin:
 
 1. Clone this repository
 2. Run `npm install` to install dependencies
-3. Run `npm run build` to build the plugin
-4. In Logseq, go to Settings > Plugins > Load unpacked plugin
-5. Select the root folder of this plugin
+3. Make your changes in `src/index.ts`
+4. Run `npm run build` to rebuild
+5. In Logseq, go to Settings > Plugins > Load unpacked plugin
+6. Select the repository folder
 
 ### From Marketplace (Coming Soon)
 
