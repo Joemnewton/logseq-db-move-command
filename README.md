@@ -13,7 +13,7 @@ A Logseq DB plugin that allows you to quickly move blocks to other pages or jour
 
 ### Easy Install (Recommended)
 
-1. Download the latest release from the [Releases page](https://github.com/YOUR_USERNAME/logseq-db-move-command/releases)
+1. Download the latest release from the [Releases page](https://github.com/Joemnewton/logseq-db-move-command/releases)
 2. Extract the `logseq-db-move-command.zip` file
 3. In Logseq, go to Settings > Plugins > Load unpacked plugin
 4. Select the extracted folder
