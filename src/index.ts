@@ -112,7 +112,7 @@ async function showPageSearchDialog(blockUuid: string) {
     </div>
   `;
 
-  const key = logseq.UI.showUI({
+  const key = (logseq.UI as any).showUI({
     key: "move-to-page-dialog",
     template: html,
     attrs: {
@@ -143,6 +143,7 @@ async function showPageSearchDialog(blockUuid: string) {
 
     async function updateResults(query: string) {
       const pages = await searchPages(query);
+      if (!resultsDiv) return;
       resultsDiv.innerHTML = "";
 
       if (query && !pages.some((p) => p.name.toLowerCase() === query.toLowerCase())) {
@@ -154,9 +155,9 @@ async function showPageSearchDialog(blockUuid: string) {
         `;
         createDiv.onclick = async () => {
           await moveBlockToPage(blockUuid, query);
-          logseq.UI.closeUI(key);
+          (logseq.UI as any).closeUI(key);
         };
-        resultsDiv.appendChild(createDiv);
+        if (resultsDiv) resultsDiv.appendChild(createDiv);
       }
 
       pages.forEach((page) => {
@@ -168,9 +169,9 @@ async function showPageSearchDialog(blockUuid: string) {
         `;
         pageDiv.onclick = async () => {
           await moveBlockToPage(blockUuid, page.name);
-          logseq.UI.closeUI(key);
+          (logseq.UI as any).closeUI(key);
         };
-        resultsDiv.appendChild(pageDiv);
+        if (resultsDiv) resultsDiv.appendChild(pageDiv);
       });
     }
 
@@ -179,7 +180,7 @@ async function showPageSearchDialog(blockUuid: string) {
     });
 
     cancelBtn.onclick = () => {
-      logseq.UI.closeUI(key);
+      (logseq.UI as any).closeUI(key);
     };
 
     // Initial load
@@ -210,7 +211,7 @@ async function showDatePickerDialog(blockUuid: string) {
     </div>
   `;
 
-  const key = logseq.UI.showUI({
+  const key = (logseq.UI as any).showUI({
     key: "move-to-date-dialog",
     template: html,
     attrs: {
@@ -244,11 +245,11 @@ async function showDatePickerDialog(blockUuid: string) {
     moveBtn.onclick = async () => {
       const selectedDate = new Date(dateInput.value + "T00:00:00");
       await moveBlockToJournalDate(blockUuid, selectedDate);
-      logseq.UI.closeUI(key);
+      (logseq.UI as any).closeUI(key);
     };
 
     cancelBtn.onclick = () => {
-      logseq.UI.closeUI(key);
+      (logseq.UI as any).closeUI(key);
     };
 
     dateInput.focus();

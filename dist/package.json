@@ -1,0 +1,28 @@
+{
+  "name": "logseq-db-move-command",
+  "version": "1.0.0",
+  "description": "Logseq DB plugin for moving nodes to other pages or dates via slash commands",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc && cp package.json dist/",
+    "dev": "tsc --watch"
+  },
+  "keywords": [
+    "logseq",
+    "logseq-plugin",
+    "move-node",
+    "block-management"
+  ],
+  "author": "",
+  "license": "MIT",
+  "logseq": {
+    "id": "logseq-db-move-command",
+    "title": "Move Command",
+    "icon": "🔄",
+    "main": "dist/index.js"
+  },
+  "devDependencies": {
+    "@logseq/libs": "^0.0.17",
+    "typescript": "^5.3.3"
+  }
+}
