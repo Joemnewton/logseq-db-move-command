@@ -214,7 +214,7 @@ async function showDatePickerDialog(blockUuid) {
         dateInput.focus();
     }, 100);
 }
-async function main() {
+function main() {
     console.log("Move Command plugin loaded");
     // Register slash commands - use async but don't await internally
     logseq.Editor.registerSlashCommand("Move To", async (e) => {
@@ -233,5 +233,6 @@ async function main() {
         moveBlockToJournalDate(e.uuid, tomorrow).catch(console.error);
     });
 }
+// Initialize immediately
 logseq.ready(main).catch(console.error);
 //# sourceMappingURL=index.js.map

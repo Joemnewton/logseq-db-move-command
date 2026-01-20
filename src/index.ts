@@ -256,7 +256,7 @@ async function showDatePickerDialog(blockUuid: string) {
   }, 100);
 }
 
-async function main() {
+function main() {
   console.log("Move Command plugin loaded");
 
   // Register slash commands - use async but don't await internally
@@ -280,4 +280,5 @@ async function main() {
   });
 }
 
+// Initialize immediately
 logseq.ready(main).catch(console.error);
