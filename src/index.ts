@@ -183,9 +183,9 @@ async function showPageSearchDialog(blockUuid: string) {
       (logseq.UI as any).closeUI(key);
     };
 
-    // Initial load
-    await updateResults("");
+    // Initial load - delayed to avoid blocking
     input.focus();
+    setTimeout(() => updateResults(""), 50);
   }, 100);
 }
 
@@ -256,34 +256,27 @@ async function showDatePickerDialog(blockUuid: string) {
   }, 100);
 }
 
-function main() {
+async function main() {
   console.log("Move Command plugin loaded");
 
-  // Register slash command: Move To
+  // Register slash commands - use async but don't await internally
   logseq.Editor.registerSlashCommand("Move To", async (e) => {
-    const blockUuid = e.uuid;
-    await showPageSearchDialog(blockUuid);
+    showPageSearchDialog(e.uuid).catch(console.error);
   });
 
-  // Register slash command: Move To Date
   logseq.Editor.registerSlashCommand("Move To Date", async (e) => {
-    const blockUuid = e.uuid;
-    await showDatePickerDialog(blockUuid);
+    showDatePickerDialog(e.uuid).catch(console.error);
   });
 
-  // Register slash command: Move to Today
   logseq.Editor.registerSlashCommand("Move to Today", async (e) => {
-    const blockUuid = e.uuid;
     const today = new Date();
-    await moveBlockToJournalDate(blockUuid, today);
+    moveBlockToJournalDate(e.uuid, today).catch(console.error);
   });
 
-  // Register slash command: Move to Tomorrow
   logseq.Editor.registerSlashCommand("Move to Tomorrow", async (e) => {
-    const blockUuid = e.uuid;
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
-    await moveBlockToJournalDate(blockUuid, tomorrow);
+    moveBlockToJournalDate(e.uuid, tomorrow).catch(console.error);
   });
 }
 
